@@ -1,11 +1,16 @@
 module github.com/casdoor/elk-auth-casdoor
 
-go 1.16
-
-require github.com/astaxie/beego v1.12.1
+go 1.23
 
 require (
-	github.com/casdoor/casdoor-go-sdk v0.1.7
-	github.com/shiena/ansicolor v0.0.0-20200904210342-c7312218db18 // indirect
-	gopkg.in/yaml.v2 v2.2.8 // indirect
+	github.com/casdoor/casdoor-go-sdk v1.55.3
+	github.com/golang-jwt/jwt/v4 v4.5.0
+)
+
+require (
+	github.com/golang/protobuf v1.5.3 // indirect
+	golang.org/x/net v0.16.0 // indirect
+	golang.org/x/oauth2 v0.13.0 // indirect
+	google.golang.org/appengine v1.6.7 // indirect
+	google.golang.org/protobuf v1.31.0 // indirect
 )
