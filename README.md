@@ -1,6 +1,7 @@
 # elk-auth-casdoor
 
 [![CI](https://github.com/casdoor/elk-auth-casdoor/actions/workflows/ci.yml/badge.svg)](https://github.com/casdoor/elk-auth-casdoor/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/casdoor/elk-auth-casdoor)](https://github.com/casdoor/elk-auth-casdoor/releases/latest)
 [![Go Report Card](https://goreportcard.com/badge/github.com/casdoor/elk-auth-casdoor)](https://goreportcard.com/report/github.com/casdoor/elk-auth-casdoor)
 [![License](https://img.shields.io/github/license/casdoor/elk-auth-casdoor)](LICENSE)
 
@@ -64,12 +65,13 @@ browser ──> elk-auth-casdoor (:8080) ──> Kibana (:5601)
     go run . -config conf/config.json
     ```
 
-    or with Docker:
+    or with the Docker image (`linux/amd64` and `linux/arm64`), published to `ghcr.io/casdoor/elk-auth-casdoor` on every release:
 
     ```shell
-    docker build -t elk-auth-casdoor .
-    docker run -p 8080:8080 -v "$PWD/conf:/app/conf" -e SESSION_SECRET=<random-string> elk-auth-casdoor
+    docker run -p 8080:8080 -v "$PWD/conf:/app/conf" -e SESSION_SECRET=<random-string> ghcr.io/casdoor/elk-auth-casdoor:latest
     ```
+
+    The container reads `/app/conf/config.json`, so `certificateFile` should be `conf/token_jwt_key.pem` (relative to `/app`) or another path inside the container, and `listenAddr` should stay `:8080`.
 
 5. Visit <http://localhost:8080>, sign in with Casdoor, and you see Kibana.
 
